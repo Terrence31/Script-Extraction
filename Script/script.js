@@ -1,19 +1,34 @@
-<html>
-<head>
-    <title>Script Generator</title>
-</head>
+// Function to log the click event details
+function logClick(event) {
+    const clickDetails = {
+        timestamp: new Date().toISOString(),
+        element: event.target.tagName,
+        textContent: event.target.innerText,
+        x: event.clientX,
+        y: event.clientY
+    };
 
-<body>
-<h1>WEBSITE TO GENERATE THE SCRIPT OF THE USER'S INTERACTION WITH THE WEBSITE</h1>
-<br><br>
-<button id="button1">Admin</button>
-<br><br>
-<button id="button2">User</button>
-<br><br>
-<a>Login</a>
-<br><br><br><br><br><br>
-<button id="button3" onclick="window.location.href='next_page.html'">Go To Next Page</button>
+    // Check if the clicked element is the specific button
+    if (event.target.tagName.toLowerCase() === 'button') {
+        clickDetails.elementDetails = 'Specific Button';
+    }
 
-<script src="New_Script.js"></script>
-</body>
-</html>
+    console.log("User Clicked:", clickDetails);
+
+    // You can send this data to a server for storage/processing
+    // For example, using fetch or XMLHttpRequest
+    
+    fetch('http://127.0.0.1:5500/log_click', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(clickDetails)
+    }).then(response => response.json())
+    .then(data => console.log('Server Respose: ',data))
+    .then(error => console.log('Error: ',error));
+
+}
+
+// Add event listener to track clicks on the whole document
+document.addEventListener('click', logClick);
