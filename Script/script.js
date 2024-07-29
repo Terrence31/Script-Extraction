@@ -18,7 +18,7 @@ function logClick(event) {
     // You can send this data to a server for storage/processing
     // For example, using fetch or XMLHttpRequest
     
-    fetch('http://127.0.0.1:5500/log_click', {
+    fetch('http://127.0.0.1:5000/log_click', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
