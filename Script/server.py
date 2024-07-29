@@ -7,17 +7,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-file_path = "C:/Users/TERREL BRAGANCA/chatbot/Script-Extraction/Script/sessions_hist.csv"
-
-def get_current_sequence(file_path):
-    if not os.path.exists(file_path):
-        return 0
-    with open(file_path, mode='r', newline='') as file:
-        reader = csv.reader(file)
-        lines = list(reader)
-        if len(lines) <= 1:
-            return 0
-        return int(lines[-1][0])
+file_path = "C:/Users/TERREL BRAGANCA/chatbot/Script_thingamajig/session.csv"
 
 @app.route('/log_click', methods=['POST'])
 def log_click():
