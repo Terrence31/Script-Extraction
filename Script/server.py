@@ -18,9 +18,7 @@ def log_click():
     with open(file_path,mode='a',newline='') as file:
         writer = csv.writer(file)
         
-        if os.stat(file_path).st_size == 0:
-            writer.writerow(['timestamp', 'element', 'textContent'])
-        writer.writerow([data.get('timestamp'), data.get('element'), data.get('textContent')])
+        writer.writerow([data.get('textContent')])
 
     processed_data = {
         'status': 'success',
