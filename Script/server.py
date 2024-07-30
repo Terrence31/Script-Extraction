@@ -26,7 +26,6 @@ def log_click():
         'received_at': data['timestamp']
     }
     
-    print(processed_data)
 
     return jsonify(processed_data)
 
