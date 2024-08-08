@@ -46,8 +46,7 @@ function logClick(event) {
             timestamp: new Date().toISOString(),
             element: event.target.tagName,
             textContent: event.target.innerText,
-            x: event.clientX,
-            y: event.clientY
+            title: document.title
         };
 
         // Log the clickDetails object to check its content
@@ -63,7 +62,7 @@ function logClick(event) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(clickDetails)
+            body: JSON.stringify(clickDetails,)
         })
             .then(response => response.json())
             .then(data => console.log('Server Response:', data))
